@@ -1,11 +1,6 @@
-{% include "global/partials/head.html" %}
-
-{% include "global/partials/header.html" %}
-
-<main class="main-content-container">
-  <div class="main-content main-content-detail container">
-    {% include "recipes/partials/recipe-item.html" %}
-  </div>
-</main>
-
-{% include "global/partials/footer.html" %}
+{% extends "global/base.html" %}
+{% block content %}
+<div class="main-content main-content-detail container">
+  {% include "recipes/partials/recipe-item.html" %}
+</div>
+{% endblock content %}
