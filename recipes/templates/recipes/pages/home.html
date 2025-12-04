@@ -1,13 +1,13 @@
 {% include "recipes/partials/head.html" %}
-  <header class="main-header-container">
-    <div class="main-header container">
-      <h1> 
-        <a class="main-logo" href="/">
-          <i class="fa-solid fa-rocket main-logo-icon"></i> 
-          <span class="main-logo-text">Home, app name: {{app_name}}</span>
-        </a>
-      </h1>
+{% include "recipes/partials/header.html" %}
+
+  <div class="search-container">
+    <div class="container">
+      <h2>Essa é a nova home do app</h2>
+      <form action="" class="search-form">
+        <input type="search" class="search-input" name="search" id="">
+        <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+      </form>
     </div>
-  </header>
-  <h2>Essa é a nova home do app</h2>
+  </div>
 {% include "recipes/partials/footer.html" %}
