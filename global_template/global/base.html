@@ -1,10 +1,19 @@
-{% include "global/partials/head.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "global/partials/head.html" %}
+    <title> {% block title %}{% endblock title %} Recipes</title>
+  </head>
 
-{% include "global/partials/header.html" %}
+  <body>
+    {% include "global/partials/header.html" %}
 
-{% include "recipes/partials/search.html" %}
+    {% include "recipes/partials/search.html" %}
 
-<main class="main-content-container">
-  {% block content %}{% endblock content %}
-</main>
-{% include "global/partials/footer.html" %}
+    <main class="main-content-container">
+      {% block content %}{% endblock content %}
+    </main>
+
+    {% include "global/partials/footer.html" %}
+  </body>
+</html>
