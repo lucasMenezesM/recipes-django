@@ -1,13 +1,16 @@
 {% include "recipes/partials/head.html" %}
+
 {% include "recipes/partials/header.html" %}
 
-  <div class="search-container">
-    <div class="container">
-      <h2>Essa é a nova home do app</h2>
-      <form action="" class="search-form">
-        <input type="search" class="search-input" name="search" id="">
-        <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
-      </form>
-    </div>
+{% include "recipes/partials/search.html" %}
+
+<div class="main-content-container">
+  <div class="main-content main-content-list container">
+    {% include "recipes/partials/recipe-item.html" %}
+    {% include "recipes/partials/recipe-item.html" %}
+    {% include "recipes/partials/recipe-item.html" %}
+    {% include "recipes/partials/recipe-item.html" %}
+    {% include "recipes/partials/recipe-item.html" %}
   </div>
+</div>
 {% include "recipes/partials/footer.html" %}
