@@ -26,10 +26,15 @@
         {{ recipe.created_at|date:"d/n/Y" }} às {{ recipe.created_at|date:"H:i" }}
       </span>
       <span class="recipe-author-item">
-        <a href={% url "recipes:category" recipe.category.id %}>
+        {% if recipe.category %}
+          <a href={% url "recipes:category" recipe.category.id %}>
+            <i class="fas fa-user"></i>
+            {{ recipe.category.name }}
+          </a>
+        {% else %}
           <i class="fas fa-user"></i>
-          {{ recipe.category.name }}
-        </a>
+          Não definida
+        {% endif %}
       </span>
     </div>
 
