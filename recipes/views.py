@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Recipe
+from django.shortcuts import render, get_object_or_404
+from .models import Recipe, Category
 # Create your views here.
 
 
@@ -11,16 +11,21 @@ def home(request):
 
 
 def category(request, category_id):
-    recipes = Recipe.objects.filter(category_id=category_id, is_published=True)
-    return render(request, 'recipes/pages/recipes-category.html', context = {
-        'recipes': recipes
+    category = get_object_or_404(Category, id=category_id)
+
+    recipes = Recipe.objects.filter(category=category, is_published=True)
+
+    return render(request, 'recipes/pages/recipes-category.html', context={
+      'recipes': recipes,
+      'title': f"{category.name} - Categoria",
     })
 
 
 def recipe(request, id):
-    recipe_item = Recipe.objects.filter(id=id, is_published=True).first()
+    recipe = get_object_or_404(Recipe, id=id, is_published=True)
+
     return render(request, 'recipes/pages/recipe-view.html', context={
-        'recipe': recipe_item,
+        'recipe': recipe,
         'is_detail_page': True
     })
 
