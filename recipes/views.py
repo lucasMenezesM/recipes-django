@@ -16,8 +16,8 @@ def category(request, category_id):
     recipes = Recipe.objects.filter(category=category, is_published=True)
 
     return render(request, 'recipes/pages/recipes-category.html', context={
-      'recipes': recipes,
-      'title': f"{category.name} - Categoria",
+        'recipes': recipes,
+        'title': f"{category.name} - Categoria",
     })
 
 
@@ -28,4 +28,3 @@ def recipe(request, id):
         'recipe': recipe,
         'is_detail_page': True
     })
-
