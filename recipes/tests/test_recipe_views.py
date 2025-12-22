@@ -67,3 +67,52 @@ class RecipeViewsTest(BaseViewTest):
         response = self.client.get(self.category_url(id=category.id))
         self.assertTemplateUsed(
             response, 'recipes/pages/recipes-category.html')
+
+    # Load Correct Template Content tests
+
+    def test_home_loads_correct_template_content(self):
+        recipe = self.get_recipe(  # noqa
+            title="Recipe Test", author={"first_name": "First Name Test"},
+            category={'name': "Category Test"},
+            description="This is a This is a description test"
+        )
+
+        response = self.client.get(self.home_url())
+        content = response.content.decode('utf-8')
+
+        assert "Recipe Test" in content
+        assert "First Name Test" in content
+        assert "Category Test" in content
+        assert "This is a description test" in content
+
+    def test_recipe_loads_correct_template_content(self):
+        recipe = self.get_recipe(
+            title="Recipe Test For Recipe View",
+            author={"first_name": "First Name Test For Recipe View"},
+            category={'name': "Category Test For Recipe View"},
+            description="This is a This is a description test For Recipe View"
+        )
+
+        response = self.client.get(self.recipe_url(id=recipe.id))
+        content = response.content.decode('utf-8')
+
+        assert "Recipe Test For Recipe View" in content
+        assert "First Name Test For Recipe View" in content
+        assert "Category Test For Recipe View" in content
+        assert "This is a description test For Recipe View" in content
+
+    def test_category_loads_correct_template_content(self):
+        recipe = self.get_recipe(
+            title="Recipe Test For Category View",
+            author={"first_name": "First Name Test For Category View"},
+            category={'name': "Category Test For Category View"},
+            description="This is a This is a description test For Category View",  # noqa E501
+        )
+
+        response = self.client.get(self.category_url(id=recipe.category.id))
+        content = response.content.decode('utf-8')
+
+        assert "Recipe Test For Category View" in content
+        assert "First Name Test For Category View" in content
+        assert "Category Test For Category View" in content
+        assert "This is a description test For Category View" in content
