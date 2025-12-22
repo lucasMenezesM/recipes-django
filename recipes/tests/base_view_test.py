@@ -67,5 +67,5 @@ class BaseViewTest(TestCase):
             preparation_steps_is_html=preparation_steps_is_html,
             category=self.get_category(**category),
             author=self.get_user(**author),
-            is_published=True
+            is_published=is_published
         )

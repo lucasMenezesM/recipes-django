@@ -116,3 +116,23 @@ class RecipeViewsTest(BaseViewTest):
         assert "First Name Test For Category View" in content
         assert "Category Test For Category View" in content
         assert "This is a description test For Category View" in content
+
+    def test_home_does_not_load_not_published_recipes(self):
+        recipe = self.get_recipe(is_published=False)  # noqa
+        response = self.client.get(self.home_url())
+
+        content = response.content.decode("utf-8")
+        assert "No recipes found here" in content
+
+    def test_category_view_does_not_load_not_published_recipes(self):
+        recipe = self.get_recipe(is_published=False)
+        response = self.client.get(self.category_url(id=recipe.category.id))
+        content = response.content.decode("utf-8")
+
+        assert f"No {recipe.category.name} Recipes Found Here" in content
+
+    def test_recipe_view_does_not_load_not_published_recipe(self):
+        recipe = self.get_recipe(is_published=False)
+        response = self.client.get(self.recipe_url(id=recipe.id))
+
+        assert response.status_code == 404
