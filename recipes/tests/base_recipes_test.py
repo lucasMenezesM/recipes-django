@@ -4,7 +4,7 @@ from ..models import Category, Recipe, User
 from django.test import TestCase
 
 
-class BaseViewTest(TestCase):
+class BaseRecipesTest(TestCase):
 
     def setUp(self):
         return super().setUp()
