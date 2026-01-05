@@ -15,6 +15,9 @@ class BaseRecipesTest(TestCase):
     def category_url(self, id: int = 1):
         return reverse('recipes:category',  kwargs={'category_id': id})
 
+    def search_url(self):
+        return reverse('recipes:search')
+
     def recipe_url(self, id: int = 1):
         return reverse('recipes:recipe', kwargs={'id': id})
 
