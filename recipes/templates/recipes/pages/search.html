@@ -1,7 +1,15 @@
 {% extends "global/base.html" %}
-{% block title %}Search | {% endblock title %}
+{% block title %}Searching for "{{ search_term }}" | {% endblock title %}
 
 {% block content %}
+
+    {% for recipe in recipes %}
+        {% include "recipes/partials/recipe-item.html" %}
+    {% empty %}
+        <div class="center m-y">
+            <h1>No recipes Found Here</h1>
+        </div>
+    {% endfor %}
     Search view
 {% endblock content %}
 
